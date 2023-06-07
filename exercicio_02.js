@@ -1,9 +1,11 @@
+class MeuErro extends Error {
+  constructor(message){
+    super(message);
+    this.name = "Meu Erro";
+  }
+}
 class Estudante {
   constructor(nome, idade, turma) {
-    if (!nome || !idade || !turma) {
-      throw new Error('Todos os atributos são obrigatórios.')
-    }
-
     this.nome = nome
     this.idade = idade
     this.turma = turma
@@ -14,22 +16,23 @@ class Estudante {
   }
 
   atributos() {
+    if (this.nome == "" &&  this.idade == "" && this.turma == "") {
+
     return {
       nome: this.nome,
       idade: this.idade,
       turma: this.turma
-    }
+      }
+    } else{
+      throw new MeuErro('Todos os atributos são obrigatórios.')
+    } 
   }
 }
 
-try {
   const estudante = new Estudante("", 16, "3A")
 
   const atributos = estudante.mostrarAtributos()
-
-  console.log(atributos.nome)
-  console.log(atributos.idade)
-  console.log(atributos.turma)
-} catch (error) {
-  console.error('Erro:', error.message)
-}
+  console.log(estudante.atributos())
+  // console.log(atributos.nome)
+  // console.log(atributos.idade)
+  // console.log(atributos.turma)

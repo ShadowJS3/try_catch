@@ -1,3 +1,9 @@
+class MeuErro extends Error {
+  constructor(message){
+    super(message);
+    this.name = "Meu Erro";
+  }
+}
 class NerdIF {
   constructor(estudante, cosplay, nota_cosplay) {
     this.estudante = estudante;
@@ -17,7 +23,7 @@ class NerdIF {
     if (this.estudante != "" && this.cosplay != "" && this.nota_cosplay != "") {
     
     } else{
-      throw new Error("esta faltando identificar o estudante, cosplay e nota cosplay")
+      throw new MeuErro("esta faltando identificar o estudante, cosplay e nota cosplay")
     }
 
     return {
